@@ -1,7 +1,8 @@
 package com.umutyenidil.springwhatsapp.message;
 
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
-import org.apache.coyote.Response;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
@@ -13,6 +14,9 @@ import java.util.List;
 @RestController
 @RequestMapping("api/v1/messages")
 @RequiredArgsConstructor
+@Tag(
+        name = "Message"
+)
 public class MessageController {
     private final MessageService messageService;
 
@@ -31,7 +35,7 @@ public class MessageController {
     @ResponseStatus(HttpStatus.CREATED)
     public void uploadMedia(
             @RequestParam("chat-id") String chatId,
-            @RequestParam("file") MultipartFile file,
+            @Parameter() @RequestParam("file") MultipartFile file,
             Authentication authentication
     ) {
         messageService.uploadMediaMessage(chatId, file, authentication);
