@@ -14,4 +14,11 @@ public interface UserRepository extends JpaRepository<User, String> {
     Optional<User> findByEmail(
             @Param("email") String email
     );
+
+    @Query(
+            name = UserConstants.FIND_USER_BY_PUBLIC_ID
+    )
+    Optional<User> findByPublicId(
+            @Param("publicId") String publicId
+    );
 }
