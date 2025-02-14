@@ -20,7 +20,7 @@ import java.util.List;
 public class MessageController {
     private final MessageService messageService;
 
-    @PostMapping("/")
+    @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public void saveMessage(
             @RequestBody MessageRequest message
@@ -41,7 +41,7 @@ public class MessageController {
         messageService.uploadMediaMessage(chatId, file, authentication);
     }
 
-    @PatchMapping("/")
+    @PatchMapping
     @ResponseStatus(HttpStatus.ACCEPTED)
     public void setMessagesToSeen(
             @RequestParam("chat-id") String chatId,

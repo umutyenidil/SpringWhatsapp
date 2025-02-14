@@ -18,7 +18,7 @@ import java.util.List;
 public class ChatController {
     private final ChatService chatService;
 
-    @PostMapping("/")
+    @PostMapping
     public ResponseEntity<StringResponse> createChat(
             @RequestParam(name = "sender-id") String senderId,
             @RequestParam(name = "receiver-id") String receiverId
@@ -32,7 +32,7 @@ public class ChatController {
         return ResponseEntity.ok(response);
     }
 
-    @GetMapping("/")
+    @GetMapping
     public ResponseEntity<List<ChatResponse>> getChatsByReceiver(
             Authentication authentication
     ) {
